@@ -20,13 +20,13 @@ public class Person {
 	@Column (name = "Person_Id")
 	private int userId;
 	
-	@Column (name = "Name")
+	@Column (name = "Name", unique=true)
 	private String name;
 	
 	@Column (name = "Password")
 	private String password;
 	
-	@OneToMany (fetch=FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany (fetch=FetchType.LAZY, mappedBy = "person", cascade = CascadeType.ALL)
 	private List<TaskLog> taskLogs = new ArrayList<TaskLog>();
 	
 	public Person() {

@@ -31,7 +31,7 @@ public class TaskLog {
 	
 	@ManyToOne (cascade = CascadeType.ALL)
 	@JoinColumn (name = "Person_Id")
-	private Person user;
+	private Person person;
 		
 	public TaskLog() {
 		super();
@@ -43,7 +43,7 @@ public class TaskLog {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.task = task;
-		this.user = user;
+		this.person = user;
 	}
 
 	public int getId() {
@@ -77,6 +77,13 @@ public class TaskLog {
 	public void setTask(String task) {
 		this.task = task;
 	}
-	
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 	
 }
