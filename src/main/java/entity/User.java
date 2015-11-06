@@ -23,6 +23,9 @@ public class User {
 	@Column (name = "name")
 	private String name;
 	
+	@Column (name = "password")
+	private String password;
+	
 	@OneToMany (fetch=FetchType.LAZY, mappedBy = "compound", cascade = CascadeType.ALL)
 	private List<TaskLog> taskLogs = new ArrayList<TaskLog>();
 
