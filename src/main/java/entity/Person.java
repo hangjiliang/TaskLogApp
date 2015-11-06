@@ -13,11 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="USER")
-public class User {
+@Table (name="PERSON")
+public class Person {
 	@Id
 	@GeneratedValue
-	@Column (name = "User_Id")
+	@Column (name = "Person_Id")
 	private int userId;
 	
 	@Column (name = "Name")
@@ -28,6 +28,17 @@ public class User {
 	
 	@OneToMany (fetch=FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private List<TaskLog> taskLogs = new ArrayList<TaskLog>();
+	
+	public Person() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Person(String name, String password) {
+		super();
+		this.name = name;
+		this.password = password;
+	}
 
 	public int getId() {
 		return userId;

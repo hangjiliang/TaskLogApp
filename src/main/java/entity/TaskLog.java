@@ -2,8 +2,10 @@ package entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,6 +16,7 @@ import javax.persistence.Table;
 public class TaskLog {
 
 	@Id
+	@GeneratedValue
 	@Column (name = "Task_Id")
 	private int taskId;
 	
@@ -26,9 +29,22 @@ public class TaskLog {
 	@Column (name = "Task")
 	private String task;
 	
-	@ManyToOne
-	@JoinColumn (name = "User_Id")
-	private User user;
+	@ManyToOne (cascade = CascadeType.ALL)
+	@JoinColumn (name = "Person_Id")
+	private Person user;
+		
+	public TaskLog() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public TaskLog(Date startDate, Date endDate, String task, Person user) {
+		super();
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.task = task;
+		this.user = user;
+	}
 
 	public int getId() {
 		return taskId;
