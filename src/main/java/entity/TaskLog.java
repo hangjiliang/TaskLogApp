@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,8 +14,8 @@ import javax.persistence.Table;
 public class TaskLog {
 
 	@Id
-	@Column (name = "Id")
-	private int id;
+	@Column (name = "Task_Id")
+	private int taskId;
 	
 	@Column (name = "Start_Date")
 	private Date startDate;
@@ -23,13 +25,17 @@ public class TaskLog {
 	
 	@Column (name = "Task")
 	private String task;
+	
+	@ManyToOne
+	@JoinColumn (name = "User_Id")
+	private User user;
 
 	public int getId() {
-		return id;
+		return taskId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.taskId = id;
 	}
 
 	public Date getStartDate() {

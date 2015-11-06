@@ -17,24 +17,24 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue
-	@Column (name = "Id")
-	private int id;
+	@Column (name = "User_Id")
+	private int userId;
 	
-	@Column (name = "name")
+	@Column (name = "Name")
 	private String name;
 	
-	@Column (name = "password")
+	@Column (name = "Password")
 	private String password;
 	
-	@OneToMany (fetch=FetchType.LAZY, mappedBy = "compound", cascade = CascadeType.ALL)
+	@OneToMany (fetch=FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private List<TaskLog> taskLogs = new ArrayList<TaskLog>();
 
 	public int getId() {
-		return id;
+		return userId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.userId = id;
 	}
 
 	public String getName() {
