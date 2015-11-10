@@ -16,7 +16,7 @@ import entity.Person;
 import entity.TaskLog;
 
 @SuppressWarnings("deprecation")
-public class DerbyDatabaseService {
+public class DerbyDatabaseService implements DatabaseService {
 	private SessionFactory _sessionFactory;
 	
 	public DerbyDatabaseService(){
@@ -28,10 +28,16 @@ public class DerbyDatabaseService {
 	      }
 	}
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#getSessionFactory()
+	 */
 	public SessionFactory getSessionFactory(){
 		return _sessionFactory;
 	}
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#savePerson(entity.Person)
+	 */
 	public void savePerson(Person user){
 		Session session = _sessionFactory.openSession();
 		Transaction tx = null;
@@ -46,6 +52,9 @@ public class DerbyDatabaseService {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#getAllPerson()
+	 */
 	public List<Person> getAllPerson(){
 		Session session = _sessionFactory.openSession();
 		Transaction tx = null;
@@ -62,6 +71,9 @@ public class DerbyDatabaseService {
 		return users;
 	}
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#findPerson(java.lang.String)
+	 */
 	public Person findPerson(String name){
 		Session session = _sessionFactory.openSession();
 		Transaction tx = null;
@@ -81,6 +93,9 @@ public class DerbyDatabaseService {
 
 	}
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#saveTaskLog(entity.TaskLog)
+	 */
 	public void saveTaskLog(TaskLog task){
 		Session session = _sessionFactory.openSession();
 		Transaction tx = null;
@@ -95,6 +110,9 @@ public class DerbyDatabaseService {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#getAllTaskLogs()
+	 */
 	public List<TaskLog> getAllTaskLogs(){
 		Session session = _sessionFactory.openSession();
 		Transaction tx = null;
@@ -111,6 +129,9 @@ public class DerbyDatabaseService {
 		return tasks;
 	}
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#findTaskLog(java.lang.String)
+	 */
 	public TaskLog findTaskLog(String task){
 		Session session = _sessionFactory.openSession();
 		Transaction tx = null;
@@ -128,6 +149,9 @@ public class DerbyDatabaseService {
 		return t;
 	}
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#updateTaskLog(java.lang.String, entity.TaskLog)
+	 */
 	public void updateTaskLog(String personName, TaskLog task){
 		Person p = this.findPerson(personName);
 		if(p != null){
@@ -157,6 +181,9 @@ public class DerbyDatabaseService {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#deletePerson(java.lang.String)
+	 */
 	public void deletePerson(String personName){
 		Session session = _sessionFactory.openSession();
 		Transaction tx = null;
@@ -176,6 +203,9 @@ public class DerbyDatabaseService {
 
 	}	
 	
+	/* (non-Javadoc)
+	 * @see databaseService.DatabaseService#deleteTaskLog(java.lang.String)
+	 */
 	public void deleteTaskLog(String task){
 		Session session = _sessionFactory.openSession();
 		Transaction tx = null;
