@@ -63,6 +63,14 @@ public class Person {
 	public void setTaskLogs(List<TaskLog> taskLogs) {
 		this.taskLogs = taskLogs;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 
 }

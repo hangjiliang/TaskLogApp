@@ -1,6 +1,5 @@
 package databaseService;
 
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -11,17 +10,24 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Service;
 
 import entity.Person;
 import entity.TaskLog;
 
 @SuppressWarnings("deprecation")
+@Service
 public class DerbyDatabaseService implements DatabaseService {
 	private SessionFactory _sessionFactory;
 	
 	public DerbyDatabaseService(){
+		initSessionFactory();
+	}
+	
+	private void initSessionFactory(){
 		try{
-			_sessionFactory = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
+			AnnotationConfiguration config = new AnnotationConfiguration().configure("hibernate.cfg.xml");
+			_sessionFactory = config.buildSessionFactory();
 	      }catch (Throwable ex) { 
 	         System.err.println("Failed to create sessionFactory object." + ex);
 	         throw new ExceptionInInitializerError(ex); 

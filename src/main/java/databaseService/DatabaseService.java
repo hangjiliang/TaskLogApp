@@ -8,7 +8,7 @@ import entity.Person;
 import entity.TaskLog;
 
 public interface DatabaseService {
-
+	
 	public abstract void savePerson(Person user);
 
 	public abstract List<Person> getAllPerson();
